@@ -15,9 +15,9 @@ def browse_library():
         os.system('clear')
         while True:
             menu = "1. Browse by artist\n2. Browse by album\n3. Browse by song"
-            console.print(Panel(menu, title="Browse Library", subtitle="Press Ctrl+c to go back", style="b green"))
+            console.print(Panel(menu, title="Browse Library", subtitle="Press Ctrl+c to go back", style="b red"))
 
-            opt = IntPrompt.ask("[b cyan]Do[/]", default=3, choices=["1", "2", "3"])
+            opt = IntPrompt.ask("[b red]Do", default=3, choices=["1", "2", "3"])
 
             match opt:
                 case 1:

@@ -16,10 +16,13 @@ def browse_song():
         artist_table = Table(
             expand=True,
             box=box.ROUNDED,
-            row_styles=["yellow", "b yellow dim"],
+            row_styles=["blue dim", "bright_blue"],
+            border_style="blue dim",
             title="Artists",
+            title_style="blue on default",
+            header_style="blue dim"
         )
-        artist_table.add_column("Index", no_wrap=True)
+        artist_table.add_column("Index")
         artist_table.add_column("Title")
 
         artist_list = subprocess.run(
@@ -44,7 +47,7 @@ def browse_song():
         with console.pager(styles=True):
             console.print(artist_table)
 
-        opt_artist = IntPrompt.ask("Select artist by index: ") - 1
+        opt_artist = IntPrompt.ask("[b blue]Select artist by index: ") - 1
         artist_selection = artist_list_array[opt_artist]
 
         os.system('clear')
@@ -52,8 +55,11 @@ def browse_song():
         album_table = Table(
             expand=True,
             box=box.ROUNDED,
-            row_styles=["yellow", "b yellow dim"],
-            title=f"Artists/{artist_selection}"
+            row_styles=["cyan dim", "bright_cyan"],
+            border_style="cyan dim",
+            title_style="cyan on default",
+            header_style="cyan dim",
+            title=f"Artists/{artist_selection}",
         )
         album_table.add_column("Index")
         album_table.add_column("Title")
@@ -80,7 +86,7 @@ def browse_song():
         with console.pager(styles=True):
             console.print(album_table)
 
-        opt_album = IntPrompt.ask("Select album by index: ") - 1
+        opt_album = IntPrompt.ask("[b cyan]Select album by index: ") - 1
         album_selection = artist_album_list_array[opt_album]
 
         os.system('clear')
@@ -88,8 +94,11 @@ def browse_song():
         song_table = Table(
             expand=True,
             box=box.ROUNDED,
-            row_styles=["yellow", "b yellow dim"],
-            title=f"Artists/{artist_selection}/{album_selection}"
+            row_styles=["green dim", "bright_green"],
+            border_style="green dim",
+            title_style="green on default",
+            header_style="green dim",
+            title=f"Artists/{album_selection}",
         )
         song_table.add_column("Index")
         song_table.add_column("Title")
@@ -116,7 +125,7 @@ def browse_song():
         with console.pager(styles=True):
             console.print(song_table)
 
-        opt_song = IntPrompt.ask("Select track by index: ") - 1
+        opt_song = IntPrompt.ask("[b green]Select track by index: ") - 1
         song_selection = artist_album_song_list_array[opt_song]
         subprocess.run(
           [f"mpc add \"{song_selection}\""],

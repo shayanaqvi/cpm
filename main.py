@@ -5,6 +5,7 @@ from rich.console import Console
 from browse import browse_library
 from shuffle import shuffle_library
 from search import search
+from queue import queue
 
 
 def main():
@@ -16,7 +17,7 @@ def main():
             menu = "1. Browse Library\n2. Shuffle Library\n3. Search\n4. Queue"
             console.print(Panel(menu, title="Main Menu", subtitle="Press Ctrl+C to exit"), style="b yellow")
 
-            opt = IntPrompt.ask("[b cyan]Do[/]", default=1, choices=["1", "2", "3"])
+            opt = IntPrompt.ask("[b yellow]Do", default=1, choices=["1", "2", "3", "4"])
 
             match opt:
                 case 1:
@@ -33,10 +34,6 @@ def main():
     except (KeyboardInterrupt, EOFError):
         os.system('clear')
         exit()
-
-
-def queue():
-    pass
 
 
 main()

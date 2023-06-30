@@ -12,44 +12,69 @@ def search():
         # search for a specific song that may exist on multiple albums (i.e. kid a mnesia)
 
         menu = "1. Artist\n2. Album\n3. Song"
-        console.print(Panel(menu, title="Search for"), style="b yellow")
-        opt = IntPrompt.ask("[b cyan]Do:[/]", choices=["1", "2", "3"])
+        console.print(Panel(menu, title="Search for"), style="b magenta")
+        opt = IntPrompt.ask("[b magenta]Do:", choices=["1", "2", "3"])
 
         # search for artists with special characters in their names (i.e. bjork)
 
         match opt:
             case 1:
-                artist_name = Prompt.ask("[b cyan]Artist name[/]")
-                subprocess.run(
-                    [f"mpc findadd artist '{artist_name}'"],
-                    shell=True,
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                    universal_newlines=True
-                )
+                search_artist()
             case 2:
-                album_name = Prompt.ask("[b cyan]Album name[/]")
-                subprocess.run(
-                    [f"mpc findadd album '{album_name}'"],
-                    shell=True,
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                    universal_newlines=True
-                )
-
+                search_album()
             case 3:
-                song_name = Prompt.ask("[b cyan]Song name[/]")
-                subprocess.run(
-                    [f"mpc searchadd title '{song_name}'"],
-                    shell=True,
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                    universal_newlines=True
-                )
-            case _:
-                console.print("Invalid option")
+                search_song()
 
-        os.system('clear')
     except (KeyboardInterrupt, EOFError):
         os.system('clear')
         return ""
+
+
+def search_artist():
+    try:
+        os.system('clear')
+        artist_name = Prompt.ask("[b magenta]Artist name")
+        subprocess.run(
+            [f"mpc findadd artist '{artist_name}'"],
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            universal_newlines=True
+        )
+    except (KeyboardInterrupt, EOFError):
+        os.system('clear')
+        return ""
+
+
+def search_album():
+    try:
+        os.system('clear')
+        album_name = Prompt.ask("[b magenta]Album name")
+        subprocess.run(
+            [f"mpc findadd album '{album_name}'"],
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            universal_newlines=True
+        )
+    except (KeyboardInterrupt, EOFError):
+        os.system('clear')
+        return ""
+
+
+def search_song():
+    try:
+        os.system('clear')
+        song_name = Prompt.ask("[b magenta]Song name")
+        subprocess.run(
+            [f"mpc searchadd title '{song_name}'"],
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            universal_newlines=True
+        )
+    except (KeyboardInterrupt, EOFError):
+        os.system('clear')
+        return ""
+
+# go back to search menu if ctrl+c is pressed
