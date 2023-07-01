@@ -26,6 +26,13 @@ def shuffle_library():
         universal_newlines=True
     )
     subprocess.run(
+        ["mpc consume on"],
+        shell=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        universal_newlines=True
+    )
+    subprocess.run(
         ["mpc play"],
         shell=True,
         stdout=subprocess.PIPE,

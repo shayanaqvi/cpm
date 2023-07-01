@@ -11,12 +11,11 @@ def search():
         os.system('clear')
         # search for a specific song that may exist on multiple albums (i.e. kid a mnesia)
 
-        menu = "1. Artist\n2. Album\n3. Song"
-        console.print(Panel(menu, title="Search for"), style="b magenta")
-        opt = IntPrompt.ask("[b magenta]Do:", choices=["1", "2", "3"])
+        menu = "1. Search for artist\n2. Search for album\n3. Search for song\n4. Return"
+        console.print(Panel(menu, title="Search"), style="b magenta")
+        opt = IntPrompt.ask("[b magenta]Do", choices=["1", "2", "3", "4"])
 
         # search for artists with special characters in their names (i.e. bjork)
-
         match opt:
             case 1:
                 search_artist()
@@ -24,6 +23,9 @@ def search():
                 search_album()
             case 3:
                 search_song()
+            case 4:
+                os.system('clear')
+                return ""
 
     except (KeyboardInterrupt, EOFError):
         os.system('clear')

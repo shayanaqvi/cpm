@@ -1,5 +1,5 @@
 # CPM
-CPM is a terminal frontend for MPC, built in Python using the [Rich](https://github.com/Textualize/rich) library.
+CPM is a terminal frontend for MPC, built in Python using the [Rich](https://github.com/Textualize/rich) library. It is unfinished and will likely remain so.
 ## Dependencies
 The following is needed to run CPM:
 - Python
@@ -17,3 +17,4 @@ For now, simply run `main.py` and follow the prompts. You can press Ctrl+c in mo
   - It can't differentiate between songs of the same name that are on different albums (i.e. a song like "Pyramid Song" exists on the albums "Amnesiac" and "Kid A Mnesiac").
   - Searching for artists with special characters in their names requires typing that special character (i.e. Sigur Rós). I'm not entirely sure if there is a workaround for this.
 - [ ] Using Ctrl+c in the pager causes glitching
+- [ ] The Queue in the Currently Playing screen needs consume mode to work properly
